@@ -43,7 +43,7 @@ app.post('/addItem', (request, response) => {
     const query = 'insert into items (name, description) values(?, ?)';
     connection.query(query, [name, description], (error, results) => {
         if(error){
-            response.json({error: "Error, try again!!"});
+            response.json({error: "Error, try again!"});
         }
         else{
             response.json({id: results.insertId, name, description});
@@ -55,14 +55,14 @@ app.post('/addItem', (request, response) => {
 app.post('/deleteItem', (request, response) => {
     const {id} = request.query;
     if(typeof id === 'undefined' || isNaN(id)){
-        response.json({error: "Ошибка бро"});
+        response.json({error: "Допущена ошибка"});
         return;
     }
 
     const query = 'delete from items where id = ?';
     connection.query(query, [id], (error, results) => {
         if(error){
-            response.json({error: "Error, try again!!"});
+            response.json({error: "Error, try again!"});
         }
         else{
             response.json({id});
